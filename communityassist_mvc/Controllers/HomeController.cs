@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using communityassist_mvc.Models; // reference to model
 
 namespace communityassist_mvc.Controllers
 {
@@ -10,7 +11,9 @@ namespace communityassist_mvc.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            Community_AssistEntities db = new Community_AssistEntities();//initialize entities classes
+
+            return View(db.GrantTypes.ToList()); // pass the collection grants to the index as a list
         }
 
         public ActionResult About()
